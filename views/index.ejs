@@ -1,0 +1,30 @@
+<!-- views/index.ejs -->  
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Gestion des Tâches</title>  
+</head>  
+<body>  
+    <h1>Liste des Tâches</h1>  
+    <ul>  
+        <% taches.forEach((tache, index) => { %>  
+            <li>  
+                <%= tache.terminee ? '✔️' : '❌' %> <%= tache.titre %>  
+                <% if (!tache.terminee) { %>  
+                    <form action="/completer/<%= index %>" method="POST" style="display:inline;">  
+                        <button type="submit">Compléter</button>  
+                    </form>  
+                <% } %>  
+            </li>  
+        <% }); %>  
+    </ul>  
+
+    <h2>Ajouter une Tâche</h2>  
+    <form action="/ajouter" method="POST">  
+        <input type="text" name="titre" required />  
+        <button type="submit">Ajouter</button>  
+    </form>  
+</body>  
+</html>  
