@@ -2,24 +2,30 @@
 <!DOCTYPE html>  
 <html lang="fr">  
 <head>  
-    <meta charset="UTF-8">  
+    <link rel="stylesheet" href="/public/bootstrap.css">
+    <link rel="stylesheet" href="/public/style.css">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Gestion des Tâches</title>  
 </head>  
-<body>  
-    <h1>Liste des Tâches</h1>  
+<body> 
+    <div class="container">
+    <h1 class="text-center bg-success">Liste des Tâches</h1>  
     <ul>  
         <% taches.forEach((tache, index) => { %>  
             <li>  
+                <!-- si la tache est terminée  ou pas -->
                 <%= tache.terminee ? '✔️' : '❌' %> <%= tache.titre %>  
                 <% if (!tache.terminee) { %>  
                     <form action="/completer/<%= index %>" method="POST" style="display:inline;">  
-                        <button type="submit">Compléter</button>  
+                        <button class="btn btn-success" type="submit">Compléter</button>  
                     </form>  
                 <% } %>  
             </li>  
         <% }); %>  
     </ul>  
+
+</div> 
 
     <h2>Ajouter une Tâche</h2>  
     <form action="/ajouter" method="POST">  

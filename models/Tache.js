@@ -2,7 +2,7 @@
 class Tache {  
     constructor(titre) {  
         this.titre = titre;  
-        this.terminee = false;  
+        this.terminee = false; 
     }  
 
     completerTache() {  

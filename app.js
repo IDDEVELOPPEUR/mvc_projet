@@ -1,5 +1,6 @@
 // app.js  
 const express = require('express');  
+const path=require('path');
 const bodyParser = require('body-parser');  
 const ControleurTache = require('./controleur/controleurTache');  
 
@@ -10,6 +11,8 @@ const controleur = new ControleurTache();
 app.set('view engine', 'ejs');  
 app.set('views', './views');  
 app.use(bodyParser.urlencoded({ extended: false }));  
+//pour pouvoir voir le changement des fichiers comme css ou js
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Route pour afficher les tâches  
 app.get('/', (req, res) => {  
